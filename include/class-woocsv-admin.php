@@ -10,7 +10,7 @@ class woocsvAdmin
 
 	static function adminMenu()
 	{
-		$page = add_menu_page('CSV Import', 'CSV Import', 'manage_options', 'woocsv_import', 'woocsvAdmin::mainPage', '', '58.1501');
+		$page = add_menu_page('CSV Import', 'CSV Import', 'manage_woocommerce', 'woocsv_import', 'woocsvAdmin::mainPage', '', '58.1501');
 		add_action( 'admin_print_scripts-' .$page, 'woocsvAdmin::initJs');
 		add_action( 'admin_print_styles-' . $page, 'woocsvAdmin::initCss' );
 	}
