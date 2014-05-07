@@ -15,6 +15,11 @@ class woocsvAdminImport
 			$row = 0;
 			$csvcontent = '';
 			while (($line = fgetcsv($handle, 0, $woocsvImport->options['seperator'])) !== FALSE) {
+				$length = count($line);
+				for ($i = 0; $i <= $length-1; $i++) {
+					$line[$i] = htmlentities($line[$i], ENT_QUOTES | ENT_IGNORE, "ISO-8859-1");
+					$line[$i] = htmlspecialchars_decode($line[$i]);
+				}
 				$csvcontent[] = $line;
 				$row ++;
 			}
@@ -119,8 +124,14 @@ class woocsvAdminImport
 		
 		//loop through file and only import the needed block
 		while (($line = fgetcsv($handle, 0, $woocsvImport->options['seperator'])) !== FALSE) {
-			if ( $count >= $postData['currentrow'] && $count < ( (int)$postData['currentrow'] + (int)$postData['blocksize'])  )
+			if ( $count >= $postData['currentrow'] && $count < ( (int)$postData['currentrow'] + (int)$postData['blocksize'])  ) {
+				$length = count($line);
+				for ($i = 0; $i <= $length-1; $i++) {
+					$line[$i] = htmlentities($line[$i], ENT_QUOTES | ENT_IGNORE, "ISO-8859-1");
+					$line[$i] = htmlspecialchars_decode($line[$i]);
+				}
 				$csvContent[$count] = $line;
+			}
 			$count ++;
 		}
 		
