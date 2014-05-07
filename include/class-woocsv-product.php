@@ -245,7 +245,7 @@ class woocsvImportProduct
 		} else {
 			$imageID = $this->saveImageWithName($this->featuredImage);
 		}
-$imageID = $this->saveImageWithUrl($this->featuredImage);
+
 		if ($imageID)
 			set_post_thumbnail( $this->body['ID'], $imageID );	
 	}
